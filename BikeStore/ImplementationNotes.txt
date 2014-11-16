@@ -1,0 +1,11 @@
+Unit of work class could expose ProductRepository and OrderRepository, but we only need to save changes
+to Orders, so IOrderRepository will have:
+
+createOrderShell(userIP)
+UpdateItemQuantity(productID, orderID)
+DeleteItem(productID, orderID)
+UpdateShippingInfo(orderID, string email, address, etc)
+SaveChanges()
+
+IProductRepository will have
+GetProducts()
