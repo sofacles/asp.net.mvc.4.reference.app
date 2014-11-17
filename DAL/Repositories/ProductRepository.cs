@@ -5,9 +5,9 @@ using System.Text;
 
 namespace DAL
 {
-	class ProductRepository : IProductRepository
+	public class ProductRepository : IProductRepository
 	{
-		KCStoreEntities11_15 bikeEntities = new KCStoreEntities11_15();
+		KCStoreEntities11_16 bikeEntities = new KCStoreEntities11_16();
 		public List<Product> GetProducts()
 		{
 			return bikeEntities.Product_Select().ToList();

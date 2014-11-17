@@ -25,3 +25,7 @@ C:\Users\Brad\Documents\Visual Studio 2010\Projects\BikeStore\BikeStore\bin\Syst
 C:\Users\Brad\Documents\Visual Studio 2010\Projects\BikeStore\BikeStore\bin\System.Web.WebPages.Razor.xml
 C:\Users\Brad\Documents\Visual Studio 2010\Projects\BikeStore\BikeStore\obj\Debug\BikeStore.dll
 C:\Users\Brad\Documents\Visual Studio 2010\Projects\BikeStore\BikeStore\obj\Debug\BikeStore.pdb
+C:\Users\Brad\Documents\Visual Studio 2010\Projects\BikeStore\BikeStore\obj\Debug\BikeStore.csprojResolveAssemblyReference.cache
+C:\Users\Brad\Documents\Visual Studio 2010\Projects\BikeStore\BikeStore\bin\DAL.dll
+C:\Users\Brad\Documents\Visual Studio 2010\Projects\BikeStore\BikeStore\bin\DAL.pdb
+C:\Users\Brad\Documents\Visual Studio 2010\Projects\BikeStore\BikeStore\bin\System.Data.Entity.dll

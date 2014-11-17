@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="KCStoreModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="KCStoreModelStoreContainer">
+    <EntitySet Name="Order" EntityType="KCStoreModel.Store.Order" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="OrderItem" EntityType="KCStoreModel.Store.OrderItem" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Product" EntityType="KCStoreModel.Store.Product" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_OrderItem_Order" Association="KCStoreModel.Store.FK_OrderItem_Order">
+      <End Role="Order" EntitySet="Order" />
+      <End Role="OrderItem" EntitySet="OrderItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderItem_Product" Association="KCStoreModel.Store.FK_OrderItem_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="OrderItem" EntitySet="OrderItem" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="UserIP" Type="nchar" Nullable="false" MaxLength="16" />
+    <Property Name="OrderedOn" Type="date" Nullable="false" />
+    <Property Name="CustomerName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="EmailAddress" Type="nchar" Nullable="false" MaxLength="256" />
+    <Property Name="ShippingAddress" Type="nchar" Nullable="false" MaxLength="256" />
+    <Property Name="PhoneNumber" Type="nchar" Nullable="false" MaxLength="20" />
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OrderItem">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="productID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="quantity" Type="int" Nullable="false" />
+    <Property Name="orderID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="price" Type="decimal" Nullable="false" Precision="10" Scale="2" />
+    <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="description" Type="nvarchar" Nullable="false" MaxLength="512" />
+  </EntityType>
+  <Association Name="FK_OrderItem_Order">
+    <End Role="Order" Type="KCStoreModel.Store.Order" Multiplicity="1" />
+    <End Role="OrderItem" Type="KCStoreModel.Store.OrderItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="OrderItem">
+        <PropertyRef Name="orderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderItem_Product">
+    <End Role="Product" Type="KCStoreModel.Store.Product" Multiplicity="1" />
+    <End Role="OrderItem" Type="KCStoreModel.Store.OrderItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="OrderItem">
+        <PropertyRef Name="productID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="Order_Create" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ipAddress" Type="nchar" Mode="In" />
+  </Function>
+  <Function Name="Order_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="Order_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ipAddress" Type="nchar" Mode="In" />
+    <Parameter Name="customerName" Type="nvarchar" Mode="In" />
+    <Parameter Name="emailAddress" Type="nchar" Mode="In" />
+    <Parameter Name="shippingAddress" Type="nchar" Mode="In" />
+    <Parameter Name="phoneNumber" Type="nchar" Mode="In" />
+  </Function>
+  <Function Name="OrderItem_AddOrUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="productID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="quantity" Type="int" Mode="In" />
+    <Parameter Name="orderID" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="OrderItem_Remove" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="productID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="orderID" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="Product_Select" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+</Schema>

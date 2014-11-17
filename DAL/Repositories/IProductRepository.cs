@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DAL
 {
-	interface IProductRepository
+	public interface IProductRepository
 	{
 		List<Product> GetProducts();
 	}

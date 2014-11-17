@@ -5,18 +5,18 @@ using System.Text;
 
 namespace DAL
 {
-	class OrderRepository : IOrderRepository
+	public class OrderRepository : IOrderRepository
 	{
-		private KCStoreEntities11_15 BikeEntities = new KCStoreEntities11_15();
+		private KCStoreEntities11_16 BikeEntities = new KCStoreEntities11_16();
 
 		public Guid? createOrderShell(string userIP)
 		{
 			return BikeEntities.Order_Create(userIP).FirstOrDefault();
 		}
 
-		public Guid? UpdateItemQuantity(Guid productID, Guid orderID, uint quantity, string ipAddress)
+		public Guid? UpdateItemQuantity(Guid productID, Guid orderID, uint quantity)
 		{
-			return BikeEntities.OrderItem_AddOrUpdate(ipAddress, productID, (int)quantity, orderID).FirstOrDefault();
+			return BikeEntities.OrderItem_AddOrUpdate(productID, (int)quantity, orderID).FirstOrDefault();
 		}
 
 		public Guid? DeleteItem(Guid productID, Guid orderID)
