@@ -10,8 +10,7 @@ namespace BikeStore.Controllers
 {
     public class ProductController : Controller
     {
-        //
-        // GET: /Product/
+       
 		private IProductRepository productRepository;
 
 		public ProductController(IProductRepository repo)
@@ -23,6 +22,8 @@ namespace BikeStore.Controllers
 		{
 		}
 
+		//
+		// GET: /Products/
         public ActionResult Products()
         {
 			ProductListViewModel productListViewModel = new ProductListViewModel(

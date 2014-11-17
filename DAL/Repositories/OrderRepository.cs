@@ -11,7 +11,8 @@ namespace DAL
 
 		public Guid? createOrderShell(string userIP)
 		{
-			return BikeEntities.Order_Create(userIP).FirstOrDefault();
+			Guid? retVal = BikeEntities.Order_Create(userIP).FirstOrDefault();
+			return retVal;
 		}
 
 		public Guid? UpdateItemQuantity(Guid productID, Guid orderID, uint quantity)

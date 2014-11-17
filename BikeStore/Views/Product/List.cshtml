@@ -18,18 +18,52 @@
 </head>
 <body>
 <section class="container">
-    <div class="product-list container">
+	<nav role="navigation">
+		<ul>
+			<li>@Html.ActionLink("Home", "products")</li>
+			<li>@Html.ActionLink("Cart", "products")</li>
+		</ul>
+	</nav>
+    <div style="clear:both;" class="product-list container">
         @foreach (Product product in Model.Products)
 		{
-			<div class="Cell">
-			<h2> @product.name</h2>
-			<div class="product-name"> @product.description </div> 
-			<span class="price">@product.price</span>
-			</div>
+			<section class="cell col-xs-12 col-sm-4 col-md-4 col-lg-3">
+				<header>
+					<h2> @product.name</h2>
+					<div class="product-name"> @product.description </div> 
+				</header>
+				<footer>
+					<span class="price">@product.price</span>
+					<input type="button" class="btn btn-success" value="add to cart" onclick="addToCart('@product.id')" />
+				</footer>
+				
+			</section>
 		}
     </div>
+	<div class="checkout-container"></div> 
 </section>
 </body>
 <script src="../../Scripts/jquery-1.9.1.js" type="text/javascript"></script>
 <script src="../../Scripts/bootstrap.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+var orderID = '@Model.OrderID';
+	function addToCart(productID)
+	{
+		debugger;
+		$.ajax({
+			type: "POST",
+			url: '@Url.Content("~/Order/AddProductToOrder")',
+			data: { productID : productID,
+					orderID : orderID,
+					OrderExists: false},
+			success: function(data)
+			{
+				debugger;
+				$(".result").html(data);
+			}
+		});
+		
+	}
+</script>
 </html>

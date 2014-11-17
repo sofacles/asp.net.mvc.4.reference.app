@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="KCStoreModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="KCStoreModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="KCStoreModelStoreContainer">
           <EntitySet Name="Order" EntityType="KCStoreModel.Store.Order" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="OrderItem" EntityType="KCStoreModel.Store.OrderItem" store:Type="Tables" Schema="dbo" />
@@ -95,8 +95,7 @@
           <Parameter Name="orderID" Type="uniqueidentifier" Mode="In" />
         </Function>
         <Function Name="Product_Select" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="KCStoreModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
@@ -114,10 +113,10 @@
           </AssociationSet>
           <FunctionImport Name="Product_Select" EntitySet="Products" ReturnType="Collection(KCStoreModel.Product)" />
           <FunctionImport Name="Order_Create" ReturnType="Collection(Guid)">
-            <Parameter Name="ipAddress" Mode="In" Type="String" />
+          <Parameter Name="ipAddress" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Order_Delete">
-            <Parameter Name="ID" Mode="In" Type="Guid" />
+          <Parameter Name="ID" Mode="In" Type="Guid" />
           </FunctionImport>
           <FunctionImport Name="Order_Update" ReturnType="Collection(Guid)">
             <Parameter Name="ipAddress" Mode="In" Type="String" />

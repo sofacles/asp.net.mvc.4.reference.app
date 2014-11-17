@@ -59,3 +59,81 @@ textarea {
 .validation-summary-valid {
     display: none;
 }
+
+.cell
+{
+	height: 320px;
+	padding: 15px;
+}
+
+.cell header
+{
+	height: 85%;
+}
+
+.cell footer
+{
+	height: 15%;
+	vertical-align: bottom;
+}
+
+.cell h2
+{
+	font-size: 2.0rem;
+}
+
+.cell .price
+{
+	float: right;
+	margin-top: 10px;
+}
+
+.cell input[type=button],
+.cell .price
+{
+	margin-top: 10px;
+	
+}
+
+nav
+{
+	margin: 0 0 0 18px;
+	padding: 0;
+}
+
+nav ul
+{
+	list-style-type: none;
+	-webkit-margin-before:0em;
+	-webkit-margin-after:0em;
+	margin: 0;
+	padding: 0;
+	margin-left: 10px;
+}
+
+nav ul li
+{
+	display: inline-block;
+	width: 100px;
+	height: 35px;
+	background: #898;
+	padding: 10px;
+	text-align: center;
+}
+
+nav ul li a
+{
+	color: #9f3;
+	font-weight: bold;
+}
+
+@media only screen and (max-width: 480px) 
+{
+	.cell
+	{
+		display: table;
+		clear: both;
+		height: auto;
+		
+	}
+}
