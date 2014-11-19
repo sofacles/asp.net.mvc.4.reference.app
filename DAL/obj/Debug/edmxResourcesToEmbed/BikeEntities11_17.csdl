@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="KCStoreModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="KCStoreEntities11_17" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Orders" EntityType="KCStoreModel.Order" />
+    <EntitySet Name="OrderItems" EntityType="KCStoreModel.OrderItem" />
+    <EntitySet Name="Products" EntityType="KCStoreModel.Product" />
+    <AssociationSet Name="FK_OrderItem_Order" Association="KCStoreModel.FK_OrderItem_Order">
+      <End Role="Order" EntitySet="Orders" />
+      <End Role="OrderItem" EntitySet="OrderItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderItem_OrderItem" Association="KCStoreModel.FK_OrderItem_OrderItem">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="OrderItem" EntitySet="OrderItems" />
+    </AssociationSet>
+    <FunctionImport Name="Order_Create" ReturnType="Collection(Int32)">
+      <Parameter Name="ipAddress" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Order_Delete">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Order_Update" ReturnType="Collection(Int32)">
+      <Parameter Name="ipAddress" Mode="In" Type="String" />
+      <Parameter Name="customerName" Mode="In" Type="String" />
+      <Parameter Name="emailAddress" Mode="In" Type="String" />
+      <Parameter Name="shippingAddress" Mode="In" Type="String" />
+      <Parameter Name="phoneNumber" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="OrderItem_AddOrUpdate" ReturnType="Collection(Int32)">
+      <Parameter Name="productID" Mode="In" Type="Int32" />
+      <Parameter Name="quantity" Mode="In" Type="Int32" />
+      <Parameter Name="orderID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="OrderItem_Remove">
+      <Parameter Name="productID" Mode="In" Type="Int32" />
+      <Parameter Name="orderID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Product_Select" EntitySet="Products" ReturnType="Collection(KCStoreModel.Product)" />
+    <FunctionImport Name="Order_Select" EntitySet="Orders" ReturnType="Collection(KCStoreModel.Order)">
+      <Parameter Name="orderID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="OrderItem_Select" EntitySet="OrderItems" ReturnType="Collection(KCStoreModel.OrderItem)">
+      <Parameter Name="orderID" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="UserIP" Type="String" Nullable="false" MaxLength="16" Unicode="true" FixedLength="true" />
+    <Property Name="OrderedOn" Type="DateTime" Nullable="false" />
+    <Property Name="CustomerName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="EmailAddress" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="true" />
+    <Property Name="ShippingAddress" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="true" />
+    <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="true" />
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="OrderItems" Relationship="KCStoreModel.FK_OrderItem_Order" FromRole="Order" ToRole="OrderItem" />
+  </EntityType>
+  <EntityType Name="OrderItem">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="quantity" Type="Int32" Nullable="false" />
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="orderID" Type="Int32" Nullable="false" />
+    <Property Name="productID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Order" Relationship="KCStoreModel.FK_OrderItem_Order" FromRole="OrderItem" ToRole="Order" />
+    <NavigationProperty Name="Product" Relationship="KCStoreModel.FK_OrderItem_OrderItem" FromRole="OrderItem" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="price" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+    <Property Name="description" Type="String" Nullable="false" MaxLength="512" Unicode="true" FixedLength="false" />
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="OrderItems" Relationship="KCStoreModel.FK_OrderItem_OrderItem" FromRole="Product" ToRole="OrderItem" />
+  </EntityType>
+  <Association Name="FK_OrderItem_Order">
+    <End Role="Order" Type="KCStoreModel.Order" Multiplicity="1" />
+    <End Role="OrderItem" Type="KCStoreModel.OrderItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="OrderItem">
+        <PropertyRef Name="orderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderItem_OrderItem">
+    <End Role="Product" Type="KCStoreModel.Product" Multiplicity="1" />
+    <End Role="OrderItem" Type="KCStoreModel.OrderItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="OrderItem">
+        <PropertyRef Name="productID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

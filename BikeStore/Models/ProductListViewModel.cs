@@ -8,9 +8,14 @@ namespace BikeStore.Models
 {
 	public class ProductListViewModel
 	{
-		public ProductListViewModel(List<Product> products)
+		public ProductListViewModel(List<Product> products) : this()
 		{
 			Products = products;
+		}
+
+		public ProductListViewModel()
+		{
+			OrderID = -1;
 		}
 		
 		public List<Product> Products
@@ -20,19 +25,14 @@ namespace BikeStore.Models
 		}
 
 		/// <summary>
-		/// May want to create this later, in case user does not actually add anything to cart
+		/// This will get a real value later.. not setting it initially in case user does not actually 
+		/// add anything to cart
 		/// </summary>
-		private Guid orderID = Guid.Empty;
-		public Guid OrderID
+		
+		public int OrderID
 		{
-			get
-			{
-				if (orderID == Guid.Empty)
-				{
-					orderID = Guid.NewGuid();
-				}
-				return orderID;
-			}
+			get;
+			set;
 		}
 	}
 }

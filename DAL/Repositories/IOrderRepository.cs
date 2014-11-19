@@ -7,10 +7,10 @@ namespace DAL
 {
 	public interface IOrderRepository
 	{
-		Guid? createOrderShell(string userIP);
-		Guid? UpdateItemQuantity(Guid productID, Guid orderID, uint quantity);
-		Guid? DeleteItem(Guid productID, Guid orderID);
-		Guid? UpdateShippingInfo(Guid orderID, string ipAddress, string name, string email, string shippingAddress, string phoneNumber);
+		int? createOrderShell(string userIP);
+		int? UpdateItemQuantity(int productID, int orderID, uint quantity);
+		void DeleteItem(int productID, int orderID);
+		int? UpdateShippingInfo(int orderID, string ipAddress, string name, string email, string shippingAddress, string phoneNumber);
 		void SaveChanges();
 	}
 }

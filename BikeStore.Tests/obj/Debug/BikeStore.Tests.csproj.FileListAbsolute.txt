@@ -12,9 +12,6 @@ C:\Users\Brad\Documents\Visual Studio 2010\Projects\BikeStore\BikeStore.Tests\bi
 C:\Users\Brad\Documents\Visual Studio 2010\Projects\BikeStore\BikeStore.Tests\bin\Debug\System.Web.WebPages.Deployment.dll
 C:\Users\Brad\Documents\Visual Studio 2010\Projects\BikeStore\BikeStore.Tests\bin\Debug\System.Web.WebPages.dll
 C:\Users\Brad\Documents\Visual Studio 2010\Projects\BikeStore\BikeStore.Tests\bin\Debug\System.Web.WebPages.Razor.dll
-C:\Users\Brad\Documents\Visual Studio 2010\Projects\BikeStore\BikeStore.Tests\bin\Debug\System.Web.Optimization.dll
-C:\Users\Brad\Documents\Visual Studio 2010\Projects\BikeStore\BikeStore.Tests\bin\Debug\WebGrease.dll
-C:\Users\Brad\Documents\Visual Studio 2010\Projects\BikeStore\BikeStore.Tests\bin\Debug\Antlr3.Runtime.dll
 C:\Users\Brad\Documents\Visual Studio 2010\Projects\BikeStore\BikeStore.Tests\bin\Debug\BikeStore.pdb
 C:\Users\Brad\Documents\Visual Studio 2010\Projects\BikeStore\BikeStore.Tests\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Brad\Documents\Visual Studio 2010\Projects\BikeStore\BikeStore.Tests\bin\Debug\System.Net.Http.xml
@@ -30,3 +27,7 @@ C:\Users\Brad\Documents\Visual Studio 2010\Projects\BikeStore\BikeStore.Tests\ob
 C:\Users\Brad\Documents\Visual Studio 2010\Projects\BikeStore\BikeStore.Tests\obj\Debug\BikeStore.Tests.pdb
 C:\Users\Brad\Documents\Visual Studio 2010\Projects\BikeStore\BikeStore.Tests\bin\Debug\DAL.dll
 C:\Users\Brad\Documents\Visual Studio 2010\Projects\BikeStore\BikeStore.Tests\bin\Debug\DAL.pdb
+C:\Users\Brad\Documents\Visual Studio 2010\Projects\BikeStore\BikeStore.Tests\bin\Debug\EntityFramework.dll
+C:\Users\Brad\Documents\Visual Studio 2010\Projects\BikeStore\BikeStore.Tests\bin\Debug\System.Data.Entity.dll
+C:\Users\Brad\Documents\Visual Studio 2010\Projects\BikeStore\BikeStore.Tests\bin\Debug\System.Web.Providers.dll
+C:\Users\Brad\Documents\Visual Studio 2010\Projects\BikeStore\BikeStore.Tests\bin\Debug\EntityFramework.xml

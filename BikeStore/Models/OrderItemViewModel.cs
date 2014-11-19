@@ -7,28 +7,17 @@ namespace BikeStore.Models
 {
 	public class OrderItemViewModel
 	{
-		public OrderItemViewModel()
-		{
-			OrderExists = false;
-		}
-		public string productID
+		public int productID
 		{
 			get;
 			set;
 		}
 
-		public string orderID
+		public int orderID
 		{
 			get;
 			set;
 		}
-
-		public bool OrderExists
-		{
-			get;
-			set;
-		}
-
 
 	}
 }

@@ -45,10 +45,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BikeEntities11_16.Designer.cs">
+    <Compile Include="BikeEntities11_17.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BikeEntities11_16.edmx</DependentUpon>
+      <DependentUpon>BikeEntities11_17.edmx</DependentUpon>
     </Compile>
     <Compile Include="Repositories\IOrderRepository.cs" />
     <Compile Include="Repositories\IProductRepository.cs" />
@@ -58,9 +58,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-    <EntityDeploy Include="BikeEntities11_16.edmx">
+    <EntityDeploy Include="BikeEntities11_17.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>BikeEntities11_16.Designer.cs</LastGenOutput>
+      <LastGenOutput>BikeEntities11_17.Designer.cs</LastGenOutput>
     </EntityDeploy>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

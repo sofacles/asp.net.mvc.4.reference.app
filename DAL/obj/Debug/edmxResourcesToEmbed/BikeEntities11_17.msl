@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="KCStoreModelStoreContainer" CdmEntityContainer="KCStoreEntities11_17">
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="KCStoreModel.Order">
+        <MappingFragment StoreEntitySet="Order">
+          <ScalarProperty Name="UserIP" ColumnName="UserIP" />
+          <ScalarProperty Name="OrderedOn" ColumnName="OrderedOn" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="ShippingAddress" ColumnName="ShippingAddress" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="KCStoreModel.Order">
+        <ModificationFunctionMapping>
+          <InsertFunction FunctionName="KCStoreModel.Store.Order_Create">
+            <ScalarProperty Name="UserIP" ParameterName="ipAddress" />
+            <ResultBinding Name="id" ColumnName="id" />
+          </InsertFunction>
+          <UpdateFunction FunctionName="KCStoreModel.Store.Order_Update">
+            <ScalarProperty Name="ShippingAddress" ParameterName="phoneNumber" Version="Current" />
+            <ScalarProperty Name="ShippingAddress" ParameterName="shippingAddress" Version="Current" />
+            <ScalarProperty Name="EmailAddress" ParameterName="emailAddress" Version="Current" />
+            <ScalarProperty Name="CustomerName" ParameterName="customerName" Version="Current" />
+            <ScalarProperty Name="UserIP" ParameterName="ipAddress" Version="Current" />
+            <ResultBinding Name="id" ColumnName="id" />
+          </UpdateFunction>
+          <DeleteFunction FunctionName="KCStoreModel.Store.Order_Delete">
+            <ScalarProperty Name="id" ParameterName="ID" />
+          </DeleteFunction>
+        </ModificationFunctionMapping>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderItems">
+      <EntityTypeMapping TypeName="KCStoreModel.OrderItem">
+        <MappingFragment StoreEntitySet="OrderItem">
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="orderID" ColumnName="orderID" />
+          <ScalarProperty Name="productID" ColumnName="productID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="KCStoreModel.OrderItem">
+        <ModificationFunctionMapping>
+          <InsertFunction FunctionName="KCStoreModel.Store.OrderItem_AddOrUpdate">
+            <ScalarProperty Name="orderID" ParameterName="orderID" />
+            <ScalarProperty Name="quantity" ParameterName="quantity" />
+            <ScalarProperty Name="productID" ParameterName="productID" />
+            <ResultBinding Name="quantity" ColumnName="id" />
+          </InsertFunction>
+          <UpdateFunction FunctionName="KCStoreModel.Store.OrderItem_AddOrUpdate">
+            <ScalarProperty Name="orderID" ParameterName="orderID" Version="Current" />
+            <ScalarProperty Name="quantity" ParameterName="quantity" Version="Current" />
+            <ScalarProperty Name="productID" ParameterName="productID" Version="Current" />
+            <ResultBinding Name="quantity" ColumnName="id" />
+          </UpdateFunction>
+          <DeleteFunction FunctionName="KCStoreModel.Store.OrderItem_Remove">
+            <ScalarProperty Name="orderID" ParameterName="orderID" />
+            <ScalarProperty Name="productID" ParameterName="productID" />
+          </DeleteFunction>
+        </ModificationFunctionMapping>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="KCStoreModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Order_Create" FunctionName="KCStoreModel.Store.Order_Create" />
+    <FunctionImportMapping FunctionImportName="Order_Delete" FunctionName="KCStoreModel.Store.Order_Delete" />
+    <FunctionImportMapping FunctionImportName="Order_Update" FunctionName="KCStoreModel.Store.Order_Update" />
+    <FunctionImportMapping FunctionImportName="OrderItem_AddOrUpdate" FunctionName="KCStoreModel.Store.OrderItem_AddOrUpdate" />
+    <FunctionImportMapping FunctionImportName="OrderItem_Remove" FunctionName="KCStoreModel.Store.OrderItem_Remove" />
+    <FunctionImportMapping FunctionImportName="Product_Select" FunctionName="KCStoreModel.Store.Product_Select" />
+    <FunctionImportMapping FunctionImportName="Order_Select" FunctionName="KCStoreModel.Store.Order_Select" />
+    <FunctionImportMapping FunctionImportName="OrderItem_Select" FunctionName="KCStoreModel.Store.OrderItem_Select" />
+  </EntityContainerMapping>
+</Mapping>

@@ -60,6 +60,10 @@ textarea {
     display: none;
 }
 
+.product-list
+{
+	clear: both;
+}
 .cell
 {
 	height: 320px;

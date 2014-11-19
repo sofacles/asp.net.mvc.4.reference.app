@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="01a04172-f844-45fb-9d73-76c900adf6ee" name="Brad@SD_LAPTOPIBM 2014-11-18 18:43:40" runUser="sd_laptopIBM\Brad" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Default Test Settings" id="6dcc6df0-a834-4064-a1c2-d81e14a65f3a">
+    <Deployment runDeploymentRoot="Brad_SD_LAPTOPIBM 2014-11-18 18_43_40">
+      <DeploymentItem filename="C:\Users\Brad\Documents\Visual Studio 2010\Projects\BikeStore\packages\Microsoft.AspNet.Providers.Core.1.1\lib\net40\System.Web.Providers.dll" />
+      <DeploymentItem filename="C:\Users\Brad\Documents\Visual Studio 2010\Projects\BikeStore\BikeStore\bin\BikeStore.dll" />
+      <DeploymentItem filename="C:\Users\Brad\Documents\Visual Studio 2010\Projects\BikeStore\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll" />
+      <DeploymentItem filename="C:\Users\Brad\Documents\Visual Studio 2010\Projects\BikeStore\BikeStore.Tests\bin\Debug\WebGrease.dll" />
+      <DeploymentItem filename="C:\Users\Brad\Documents\Visual Studio 2010\Projects\BikeStore\BikeStore.Tests\bin\Debug\Antlr3.Runtime.dll" />
+      <DeploymentItem filename="C:\Users\Brad\Documents\Visual Studio 2010\Projects\BikeStore\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll" />
+      <DeploymentItem filename="C:\Users\Brad\Documents\Visual Studio 2010\Projects\BikeStore\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Deployment.dll" />
+      <DeploymentItem filename="C:\Users\Brad\Documents\Visual Studio 2010\Projects\BikeStore\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.WebRequest.dll" />
+      <DeploymentItem filename="C:\Users\Brad\Documents\Visual Studio 2010\Projects\BikeStore\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll" />
+      <DeploymentItem filename="C:\Users\Brad\Documents\Visual Studio 2010\Projects\BikeStore\packages\Newtonsoft.Json.4.5.6\lib\net40\Newtonsoft.Json.dll" />
+      <DeploymentItem filename="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Data.Entity.dll" />
+      <DeploymentItem filename="C:\Users\Brad\Documents\Visual Studio 2010\Projects\BikeStore\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll" />
+      <DeploymentItem filename="C:\Users\Brad\Documents\Visual Studio 2010\Projects\BikeStore\DAL\bin\Debug\DAL.dll" />
+      <DeploymentItem filename="C:\Users\Brad\Documents\Visual Studio 2010\Projects\BikeStore\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.Helpers.dll" />
+      <DeploymentItem filename="C:\Users\Brad\Documents\Visual Studio 2010\Projects\BikeStore\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.dll" />
+      <DeploymentItem filename="C:\Users\Brad\Documents\Visual Studio 2010\Projects\BikeStore\packages\Microsoft.AspNet.Razor.2.0.20710.0\lib\net40\System.Web.Razor.dll" />
+      <DeploymentItem filename="C:\Users\Brad\Documents\Visual Studio 2010\Projects\BikeStore\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll" />
+      <DeploymentItem filename="C:\Users\Brad\Documents\Visual Studio 2010\Projects\BikeStore\BikeStore.Tests\bin\Debug\System.Web.Optimization.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2014-11-18T18:43:40.4157687-08:00" queuing="2014-11-18T18:43:40.6757691-08:00" start="2014-11-18T18:43:40.7357691-08:00" finish="2014-11-18T18:43:43.6257732-08:00" />
+  <ResultSummary outcome="Completed">
+    <Counters total="1" executed="1" passed="1" error="0" failed="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="UpdateItemQuantityTest" storage="c:\users\brad\documents\visual studio 2010\projects\bikestore\bikestore.tests\bin\debug\bikestore.tests.dll" id="d3257d4e-b8ff-9e7a-9db7-72b6308e77c1">
+      <Execution id="3f693732-1aec-4041-b47f-19f69790cde1" />
+      <TestMethod codeBase="C:/Users/Brad/Documents/Visual Studio 2010/Projects/BikeStore/BikeStore.Tests/bin/Debug/BikeStore.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="BikeStore.Tests.OrderRepositoryTest, BikeStore.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="UpdateItemQuantityTest" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="d3257d4e-b8ff-9e7a-9db7-72b6308e77c1" executionId="3f693732-1aec-4041-b47f-19f69790cde1" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="3f693732-1aec-4041-b47f-19f69790cde1" testId="d3257d4e-b8ff-9e7a-9db7-72b6308e77c1" testName="UpdateItemQuantityTest" computerName="SD_LAPTOPIBM" duration="00:00:00.2912487" startTime="2014-11-18T18:43:40.7457692-08:00" endTime="2014-11-18T18:43:42.0557710-08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3f693732-1aec-4041-b47f-19f69790cde1">
+    </UnitTestResult>
+  </Results>
+</TestRun>

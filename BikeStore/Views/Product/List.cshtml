@@ -24,13 +24,14 @@
 			<li>@Html.ActionLink("Cart", "products")</li>
 		</ul>
 	</nav>
-    <div style="clear:both;" class="product-list container">
+    <div class="product-list container">
         @foreach (Product product in Model.Products)
 		{
 			<section class="cell col-xs-12 col-sm-4 col-md-4 col-lg-3">
 				<header>
 					<h2> @product.name</h2>
 					<div class="product-name"> @product.description </div> 
+					<!-- TODO: increment quantity -->
 				</header>
 				<footer>
 					<span class="price">@product.price</span>
@@ -50,17 +51,21 @@
 var orderID = '@Model.OrderID';
 	function addToCart(productID)
 	{
-		debugger;
 		$.ajax({
 			type: "POST",
 			url: '@Url.Content("~/Order/AddProductToOrder")',
-			data: { productID : productID,
-					orderID : orderID,
-					OrderExists: false},
-			success: function(data)
+			data: { productID: productID,
+				orderID: orderID,
+				OrderExists: false
+			},
+			success: function (data)
 			{
-				debugger;
-				$(".result").html(data);
+				//TODO: this might be the first product added to the order, in which case we need
+				//to hold onto the order id
+				if (orderID == -1)
+				{
+					orderID = data.ordID;
+				}
 			}
 		});
 		

@@ -7,7 +7,7 @@ namespace DAL
 {
 	public class ProductRepository : IProductRepository
 	{
-		KCStoreEntities11_16 bikeEntities = new KCStoreEntities11_16();
+		KCStoreEntities11_17 bikeEntities = new KCStoreEntities11_17();
 		public List<Product> GetProducts()
 		{
 			return bikeEntities.Product_Select().ToList();

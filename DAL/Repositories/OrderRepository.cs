@@ -7,28 +7,27 @@ namespace DAL
 {
 	public class OrderRepository : IOrderRepository
 	{
-		private KCStoreEntities11_16 BikeEntities = new KCStoreEntities11_16();
+		private KCStoreEntities11_17 BikeEntities = new KCStoreEntities11_17();
 
-		public Guid? createOrderShell(string userIP)
+		public int? createOrderShell(string userIP)
 		{
-			Guid? retVal = BikeEntities.Order_Create(userIP).FirstOrDefault();
+			var retVal = BikeEntities.Order_Create(userIP).First();
 			return retVal;
 		}
 
-		public Guid? UpdateItemQuantity(Guid productID, Guid orderID, uint quantity)
+		public int? UpdateItemQuantity(int productID, int orderID, uint quantity)
 		{
 			return BikeEntities.OrderItem_AddOrUpdate(productID, (int)quantity, orderID).FirstOrDefault();
 		}
 
-		public Guid? DeleteItem(Guid productID, Guid orderID)
+		public void DeleteItem(int productID, int orderID)
 		{
-			return BikeEntities.OrderItem_Remove(productID, orderID).FirstOrDefault();
+			BikeEntities.OrderItem_Remove(productID, orderID);
 		}
 
-		public Guid? UpdateShippingInfo(Guid orderID, string ipAddress, string name, string email, string shippingAddress, string phoneNumber)
+		public int? UpdateShippingInfo(int orderID, string ipAddress, string name, string email, string shippingAddress, string phoneNumber)
 		{
 			return BikeEntities.Order_Update(ipAddress, name, email, shippingAddress, phoneNumber).FirstOrDefault();
-			
 		}
 
 		public void SaveChanges()

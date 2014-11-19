@@ -25,18 +25,26 @@ namespace BikeStore.Controllers
 		//
 		// POST: /Order/AddProductToOrder
 		[HttpPost]
-		public JsonResult AddProductToOrder(OrderItemViewModel orderItem)
+		public JsonResult AddProductToOrder(OrderItemViewModel orderItemViewModel)
         {
-			Guid? newID;
-			if (!orderItem.OrderExists)
+			int? orderID = -1;
+			if (orderItemViewModel.orderID == -1)
 			{
 				string ip = Request.ServerVariables["REMOTE_ADDR"];
-				newID = orderRepository.createOrderShell(ip);
+				orderID = orderRepository.createOrderShell(ip);
+
+			}
+			else
+			{
+				orderID = orderItemViewModel.orderID;
 			}
 
-			Guid? orderItemID = orderRepository.UpdateItemQuantity(Guid.Parse(orderItem.productID),
-																	Guid.Parse(orderItem.orderID), 1);
-		   return Json(new { orderItemID = orderItemID ?? Guid.Empty });
+			int? orderItemID = orderRepository.UpdateItemQuantity(orderItemViewModel.productID,
+																	(int)orderID, 1);
+
+			orderRepository.SaveChanges();
+		   return Json(new { orderItemID = orderItemID ?? -1,
+								ordID = orderID ?? -1});
         }
 
     }
