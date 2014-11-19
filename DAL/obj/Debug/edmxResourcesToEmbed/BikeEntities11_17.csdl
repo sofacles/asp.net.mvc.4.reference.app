@@ -38,7 +38,7 @@
     <FunctionImport Name="Order_Select" EntitySet="Orders" ReturnType="Collection(KCStoreModel.Order)">
       <Parameter Name="orderID" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="OrderItem_Select" EntitySet="OrderItems" ReturnType="Collection(KCStoreModel.OrderItem)">
+    <FunctionImport Name="OrderItem_Select" ReturnType="Collection(KCStoreModel.OrderItem_Select_Result)">
       <Parameter Name="orderID" Mode="In" Type="Int32" />
     </FunctionImport>
   </EntityContainer>
@@ -100,4 +100,12 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <ComplexType Name="OrderItem_Select_Result">
+    <Property Type="Int32" Name="quantity" Nullable="false" />
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="Int32" Name="orderID" Nullable="false" />
+    <Property Type="Int32" Name="productID" Nullable="false" />
+    <Property Type="String" Name="productName" Nullable="false" MaxLength="50" />
+    <Property Type="Decimal" Name="price" Nullable="false" Precision="10" Scale="2" />
+  </ComplexType>
 </Schema>

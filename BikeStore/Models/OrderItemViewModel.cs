@@ -7,13 +7,44 @@ namespace BikeStore.Models
 {
 	public class OrderItemViewModel
 	{
-		public int productID
+		public OrderItemViewModel()
+		{
+			Quantity = 0;
+		}
+
+		public int ProductID
 		{
 			get;
 			set;
 		}
 
-		public int orderID
+		public OrderItemViewModel(int productID, int orderID, string productName, string price, int quantity = 0)
+		{
+			ProductID = productID;
+			OrderID = orderID;
+			Quantity = quantity;
+			ProductName = productName;
+			Price = price;
+		}
+
+		public int OrderID
+		{
+			get;
+			set;
+		}
+
+		public int Quantity
+		{
+			get;
+			set;
+		}
+		public string ProductName
+		{
+			get;
+			set;
+		}
+
+		public string Price
 		{
 			get;
 			set;

@@ -1,0 +1,69 @@
+﻿@using BikeStore.Models;
+@using DAL;
+
+@model BikeStore.Models.CartViewModel
+
+@{
+    ViewBag.Title = "Cart";
+}
+
+<h2>Cart</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+       
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CustomerName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CustomerName)
+            @Html.ValidationMessageFor(model => model.CustomerName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EmailAddress)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.EmailAddress)
+            @Html.ValidationMessageFor(model => model.EmailAddress)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ShippingAddress)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ShippingAddress)
+            @Html.ValidationMessageFor(model => model.ShippingAddress)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PhoneNumber)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PhoneNumber)
+            @Html.ValidationMessageFor(model => model.PhoneNumber)
+        </div>
+
+		<ul class="orderItem-list">
+		@foreach(OrderItemViewModel itemVM in Model.ItemViewModels){
+		
+			<li><input type="text" value='@itemVM.Quantity' /><span>@itemVM.ProductName</span></li>
+		}
+		</ul>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to Products", "Products", "Product")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

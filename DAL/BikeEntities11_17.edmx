@@ -141,9 +141,9 @@
           </FunctionImport>
           <FunctionImport Name="Product_Select" EntitySet="Products" ReturnType="Collection(KCStoreModel.Product)" />
           <FunctionImport Name="Order_Select" EntitySet="Orders" ReturnType="Collection(KCStoreModel.Order)">
-            <Parameter Name="orderID" Mode="In" Type="Int32" />
+          <Parameter Name="orderID" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="OrderItem_Select" EntitySet="OrderItems" ReturnType="Collection(KCStoreModel.OrderItem)">
+          <FunctionImport Name="OrderItem_Select" ReturnType="Collection(KCStoreModel.OrderItem_Select_Result)">
             <Parameter Name="orderID" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
@@ -205,6 +205,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <ComplexType Name="OrderItem_Select_Result">
+          <Property Type="Int32" Name="quantity" Nullable="false" />
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="orderID" Nullable="false" />
+          <Property Type="Int32" Name="productID" Nullable="false" />
+          <Property Type="String" Name="productName" Nullable="false" MaxLength="50" />
+          <Property Type="Decimal" Name="price" Nullable="false" Precision="10" Scale="2" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -290,7 +298,18 @@
           <FunctionImportMapping FunctionImportName="OrderItem_Remove" FunctionName="KCStoreModel.Store.OrderItem_Remove" />
           <FunctionImportMapping FunctionImportName="Product_Select" FunctionName="KCStoreModel.Store.Product_Select" />
           <FunctionImportMapping FunctionImportName="Order_Select" FunctionName="KCStoreModel.Store.Order_Select" />
-          <FunctionImportMapping FunctionImportName="OrderItem_Select" FunctionName="KCStoreModel.Store.OrderItem_Select" />
+          <FunctionImportMapping FunctionImportName="OrderItem_Select" FunctionName="KCStoreModel.Store.OrderItem_Select">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KCStoreModel.OrderItem_Select_Result">
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="orderID" ColumnName="orderID" />
+                <ScalarProperty Name="productID" ColumnName="productID" />
+                <ScalarProperty Name="productName" ColumnName="productName" />
+                <ScalarProperty Name="price" ColumnName="price" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

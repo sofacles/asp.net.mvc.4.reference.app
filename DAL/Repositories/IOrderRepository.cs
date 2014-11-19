@@ -11,6 +11,8 @@ namespace DAL
 		int? UpdateItemQuantity(int productID, int orderID, uint quantity);
 		void DeleteItem(int productID, int orderID);
 		int? UpdateShippingInfo(int orderID, string ipAddress, string name, string email, string shippingAddress, string phoneNumber);
+		Order GetOrder(int orderID);
+		List<OrderItem_Select_Result> GetOrderItems(int orderID);
 		void SaveChanges();
 	}
 }

@@ -64,6 +64,12 @@ textarea {
 {
 	clear: both;
 }
+
+.orderItem-list span
+{
+	margin-left: 1rem;
+}
+
 .cell
 {
 	height: 320px;

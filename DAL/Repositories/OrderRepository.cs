@@ -30,6 +30,18 @@ namespace DAL
 			return BikeEntities.Order_Update(ipAddress, name, email, shippingAddress, phoneNumber).FirstOrDefault();
 		}
 
+		public Order GetOrder(int orderID)
+		{
+			Order order = BikeEntities.Order_Select(orderID).FirstOrDefault();
+			return order;
+		}
+
+		public List<OrderItem_Select_Result> GetOrderItems(int orderID)
+		{
+			List<OrderItem_Select_Result> orderItems = BikeEntities.OrderItem_Select(orderID).ToList();
+			return orderItems;
+		}
+
 		public void SaveChanges()
 		{
 			BikeEntities.SaveChanges();
