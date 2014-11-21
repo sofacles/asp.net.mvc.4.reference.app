@@ -6,11 +6,27 @@
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+	<link href="../../Content/Site.css" rel="stylesheet" type="text/css" />
+	<link href="../../Content/bootstrap.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
+<section class="container">
+	<nav role="navigation">
+		<ul>
+			<li>@Html.ActionLink("Home", "products")</li>
+			<li>@Html.ActionLink("Cart", "Cart", "Order", new { orderID = ViewBag.OrderID }, new { @class = "cartLink" })</li>
+		</ul>
+	</nav>
+
+
+	
     @RenderBody()
 
     @Scripts.Render("~/bundles/jquery")
     @RenderSection("scripts", required: false)
+	<script src="../../Scripts/jquery-1.9.1.js" type="text/javascript"></script>
+	<script src="../../Scripts/bootstrap.js" type="text/javascript"></script>
+
+	</section>
 </body>
 </html>

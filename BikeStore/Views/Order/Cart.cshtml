@@ -4,66 +4,82 @@
 @model BikeStore.Models.CartViewModel
 
 @{
+
     ViewBag.Title = "Cart";
 }
+<section class="container cart">
 
-<h2>Cart</h2>
+<h1 class="col-md-12">Shopping Cart</h1>
 
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
 
-    <fieldset>
-       
-
-        <div class="editor-label">
+	<div class="items">
+		@foreach (OrderItemViewModel itemVM in Model.ItemViewModels){
+		<div class="row">		
+				<div class="col-md-4 clear-fix">
+					<h2>@itemVM.ProductName</h2>
+				</div>
+				<div class="col-md-4">
+					@itemVM.Price
+				</div>
+				<div class="col-md-4">
+					<input type="text" value='@itemVM.Quantity' />
+					<input type="button" onclick="updateQuantity(@itemVM.ProductID, @itemVM.OrderID, this)" value="update" /> 
+				</div>
+			</div>
+		}
+	</div>
+	<div class="row">  
+        <div class="col-md-2  col-xs-12">
             @Html.LabelFor(model => model.CustomerName)
         </div>
-        <div class="editor-field">
+       <div class="col-md-6  col-xs-12">
             @Html.EditorFor(model => model.CustomerName)
             @Html.ValidationMessageFor(model => model.CustomerName)
         </div>
-
-        <div class="editor-label">
+	</div>
+	<div class="row">
+       <div class="col-md-2 col-xs-12">
             @Html.LabelFor(model => model.EmailAddress)
         </div>
-        <div class="editor-field">
+        <div class="col-md-6 col-xs-12">
             @Html.EditorFor(model => model.EmailAddress)
             @Html.ValidationMessageFor(model => model.EmailAddress)
         </div>
-
-        <div class="editor-label">
+	</div>
+	<div class="row">
+        <div class="col-md-2 col-xs-12">
             @Html.LabelFor(model => model.ShippingAddress)
         </div>
-        <div class="editor-field">
+         <div class="col-md-6 col-xs-12">
             @Html.EditorFor(model => model.ShippingAddress)
             @Html.ValidationMessageFor(model => model.ShippingAddress)
         </div>
-
-        <div class="editor-label">
+	</div>
+	<div class="row">
+         <div class="col-md-2 col-xs-12">
             @Html.LabelFor(model => model.PhoneNumber)
         </div>
-        <div class="editor-field">
+        <div class="col-md-6 col-xs-12">
             @Html.EditorFor(model => model.PhoneNumber)
             @Html.ValidationMessageFor(model => model.PhoneNumber)
         </div>
 
-		<ul class="orderItem-list">
-		@foreach(OrderItemViewModel itemVM in Model.ItemViewModels){
-		
-			<li><input type="text" value='@itemVM.Quantity' /><span>@itemVM.ProductName</span></li>
-		}
-		</ul>
+	</div>	
+	<div class="row">
+		<div class="md-2 md-offset-8">
+			<input type="submit" value="Place Order" />
+		</div>
+	</div>
+       
 
-        <p>
-            <input type="submit" value="Save" />
-        </p>
-    </fieldset>
 }
 
 <div>
     @Html.ActionLink("Back to Products", "Products", "Product")
 </div>
-
+</section>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

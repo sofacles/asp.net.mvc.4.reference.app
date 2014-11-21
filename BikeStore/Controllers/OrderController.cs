@@ -64,7 +64,7 @@ namespace BikeStore.Controllers
 			foreach (OrderItem_Select_Result orderItem in orderItems)
 			{
 				cartVM.ItemViewModels.Add(new OrderItemViewModel(orderItem.id, orderItem.orderID, 
-												 orderItem.productName, string.Format("C", orderItem.price), orderItem.quantity));
+												 orderItem.productName,  orderItem.price, orderItem.quantity));
 			}
 			return View("Cart", cartVM);
 		}

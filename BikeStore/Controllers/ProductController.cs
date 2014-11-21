@@ -28,6 +28,7 @@ namespace BikeStore.Controllers
         {
 			ProductListViewModel productListViewModel = new ProductListViewModel(
 															productRepository.GetProducts());
+			ViewBag.OrderID = -1;
 			return View("List", productListViewModel);
         }
 

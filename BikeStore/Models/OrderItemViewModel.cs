@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.ComponentModel.DataAnnotations;
+
 
 namespace BikeStore.Models
 {
@@ -18,7 +20,7 @@ namespace BikeStore.Models
 			set;
 		}
 
-		public OrderItemViewModel(int productID, int orderID, string productName, string price, int quantity = 0)
+		public OrderItemViewModel(int productID, int orderID, string productName, decimal price, int quantity = 0)
 		{
 			ProductID = productID;
 			OrderID = orderID;
@@ -44,7 +46,8 @@ namespace BikeStore.Models
 			set;
 		}
 
-		public string Price
+		[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:c}")]
+		public decimal Price
 		{
 			get;
 			set;
