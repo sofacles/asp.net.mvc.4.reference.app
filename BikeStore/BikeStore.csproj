@@ -216,6 +216,7 @@
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
     <Content Include="Scripts\npm.js" />
+    <Content Include="Scripts\OrderUpdater.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="TextFile1.txt" />
     <Content Include="Web.config" />
@@ -253,6 +254,7 @@
     <None Include="fonts\glyphicons-halflings-regular.woff" />
     <None Include="Scripts\jquery-1.9.1.min.map" />
     <Content Include="Views\Order\Cart.cshtml" />
+    <Content Include="Views\Order\ThankYou.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

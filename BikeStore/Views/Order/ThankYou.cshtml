@@ -1,0 +1,23 @@
+﻿@model BikeStore.Models.CartViewModel
+
+@{
+    ViewBag.Title = "ThankYou";
+}
+
+<h2>Thank You!</h2>
+
+<div>Your order will be shipped to:</div>
+
+	<div class="display-field">
+        @Html.DisplayFor(model => model.CustomerName)
+    </div>
+
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ShippingAddress)
+    </div>
+
+ <h3>If you have any questions about your order, please refer to order ID: 
+        @Html.DisplayFor(model => model.OrderID)
+ </h3> 
+
+

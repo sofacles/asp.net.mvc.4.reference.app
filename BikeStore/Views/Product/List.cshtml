@@ -8,7 +8,9 @@
 	ViewBag.Title = "Products";
 }
 
-
+<script type="text/javascript">
+	var orderID = '@Model.OrderID';
+</script>
 	
     <div class="product-list container">
         @foreach (Product product in Model.Products)
@@ -21,7 +23,7 @@
 				</header>
 				<footer>
 					<span class="price">@product.price</span>
-					<input type="button" class="btn btn-success" value="add to cart" onclick="addToCart('@product.id')" />
+					<input type="button" class="btn btn-success" value="add to cart" onclick="OrderUpdater.addToCart('@product.id')" />
 				</footer>
 				
 			</section>
@@ -30,32 +32,4 @@
 	<div class="checkout-container"></div> 
 
 
-
-<script type="text/javascript">
-
-	var orderID = '@Model.OrderID';
-	
-	function addToCart(productID)
-	{
-		$.ajax({
-			type: "POST",
-			url: '@Url.Content("~/Order/AddProductToOrder")',
-			data: { productID: productID,
-				orderID: orderID,
-				OrderExists: false
-			},
-			success: function (data)
-			{
-				var oldHref;
-				if (orderID == -1)
-				{
-					orderID = data.ordID;
-					oldHref = $(".cartLink").attr("href");
-					$(".cartLink").attr("href", oldHref.substring(0, oldHref.indexOf("?")) + "?orderID=" + orderID);
-				}
-			}
-		});
-		
-	}
-</script>
 
