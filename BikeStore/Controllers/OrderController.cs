@@ -30,6 +30,15 @@ namespace BikeStore.Controllers
 			return UpdateItemQuantity(orderItemViewModel);
         }
 
+		//
+		// POST: /Order/AddProductToOrder
+		[HttpPost]
+		public JsonResult RemoveProductFromOrder(OrderItemViewModel orderItemViewModel)
+		{
+			orderRepository.DeleteItem(orderItemViewModel.ProductID, orderItemViewModel.OrderID);
+			return Json(new { DeletedProductID = orderItemViewModel.ProductID });
+		}
+
 		private JsonResult UpdateItemQuantity(OrderItemViewModel orderItemViewModel)
 		{
 			int? orderID = -1;
@@ -63,28 +72,27 @@ namespace BikeStore.Controllers
 		}
 
 		//
-		// GET: /Products/
+		// GET: /Order/Cart
 		[HttpGet]
 		public ActionResult Cart(int orderID)
 		{
 			Order order = orderRepository.GetOrder(orderID);
 			List<OrderItem_Select_Result> orderItems = orderRepository.GetOrderItems(orderID);
 
+			//TODO: Maybe make an adapter object to convert from Entity objects to Viewmodels
 
-			CartViewModel cartVM = new CartViewModel(orderID, order.CustomerName, order.EmailAddress,
-				order.ShippingAddress, order.PhoneNumber);
-			
-			cartVM.ItemViewModels = new List<OrderItemViewModel>();
+			List<OrderItemViewModel> itemVMs = new List<OrderItemViewModel>();
 			foreach (OrderItem_Select_Result orderItem in orderItems)
 			{
-				cartVM.ItemViewModels.Add(new OrderItemViewModel(orderItem.productID, orderItem.orderID, 
+				itemVMs.Add(new OrderItemViewModel(orderItem.productID, orderItem.orderID, 
 												 orderItem.productName,  orderItem.price, orderItem.quantity));
 			}
-			return View("Cart", cartVM);
+			ViewBag.OrderID = orderID;
+			return View("Cart", itemVMs);
 		}
 
 		[HttpPost]
-		public ActionResult Cart(CartViewModel cartVM)
+		public ActionResult Checkout(CartViewModel cartVM)
 		{
 			Order order = orderRepository.GetOrder(cartVM.OrderID);
 			orderRepository.UpdateShippingInfo(cartVM.OrderID, Request.ServerVariables["REMOTE_ADDR"],
@@ -93,7 +101,21 @@ namespace BikeStore.Controllers
 			return RedirectToAction("ThankYou", new { orderID = cartVM.OrderID });
 		}
 
+		//
+		// GET: /Order/Checkout
+		[HttpGet]
+		public ActionResult Checkout(int orderID)
+		{
+			Order order = orderRepository.GetOrder(orderID);
+			ViewBag.OrderID = orderID;
+			CartViewModel cartVM = new CartViewModel(orderID, order.CustomerName, order.EmailAddress,
+				order.ShippingAddress, order.PhoneNumber);
+			return View("Checkout", cartVM);
+		}
 
+
+		//
+		// GET: /Order/ThankYou
 		[HttpGet]
 		public ActionResult ThankYou(int orderID)
 		{

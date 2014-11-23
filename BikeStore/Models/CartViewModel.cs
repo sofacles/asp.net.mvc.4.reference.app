@@ -48,11 +48,6 @@ namespace BikeStore.Models
 			set;
 		}
 
-		public List<OrderItemViewModel> ItemViewModels
-		{
-			get;
-			set;
-		}
 
 		public int OrderID
 		{

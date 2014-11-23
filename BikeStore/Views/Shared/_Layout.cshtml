@@ -10,8 +10,9 @@
 	<link href="../../Content/bootstrap.css" rel="stylesheet" type="text/css" />
 	<script src="../../Scripts/OrderUpdater.js" type="text/javascript"></script>
 	<script type="text/javascript">
-		debugger;
-		OrderUpdater.init('@Url.Content("~/Order/AddProductToOrder")', '@Url.Content("~/Order/UpdateOrderItemQuantity")');
+		OrderUpdater.init(	'@Url.Content("~/Order/AddProductToOrder")',
+							'@Url.Content("~/Order/UpdateOrderItemQuantity")',
+							'@Url.Content("~/Order/RemoveProductFromOrder")');
 	</script>
 	
 </head>
@@ -21,6 +22,7 @@
 		<ul>
 			<li>@Html.ActionLink("Products", "products", "product")</li>
 			<li>@Html.ActionLink("Cart", "Cart", "Order", new { orderID = ViewBag.OrderID }, new { @class = "cartLink" })</li>
+			<li>@Html.ActionLink("Checkout", "Checkout", "Order", new { orderID = ViewBag.OrderID }, new { @class = "cartLink" })</li>
 		</ul>
 	</nav>
 

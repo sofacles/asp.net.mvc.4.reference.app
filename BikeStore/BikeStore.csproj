@@ -255,6 +255,7 @@
     <None Include="Scripts\jquery-1.9.1.min.map" />
     <Content Include="Views\Order\Cart.cshtml" />
     <Content Include="Views\Order\ThankYou.cshtml" />
+    <Content Include="Views\Order\Checkout.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

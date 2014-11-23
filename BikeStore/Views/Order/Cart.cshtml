@@ -1,13 +1,13 @@
 ﻿@using BikeStore.Models;
 @using DAL;
 
-@model BikeStore.Models.CartViewModel
+@model List<OrderItemViewModel>
 
 @{
 
     ViewBag.Title = "Cart";
 }
-<p>@Model.EmailAddress</p>
+
 <section class="container cart">
 
 <h1 >Shopping Cart</h1>
@@ -16,70 +16,37 @@
     @Html.ValidationSummary(true)
 
 	<div class="items">
-		@foreach (OrderItemViewModel itemVM in Model.ItemViewModels){
+		@foreach (OrderItemViewModel itemVM in Model){
 		<div class="row">		
 				<div class="col-md-3 col-xs-12">
 					<h2>@itemVM.ProductName</h2>
 				</div>
-				<div class="col-md-2 col-xs-12">
+				<div class="col-md-3 col-xs-12">
 					@itemVM.Price
 				</div>
-				<div class="col-md-6 col-xs-12">
+				<div class="col-md-1 col-xs-4">
 					<input type="text" value='@itemVM.Quantity' class="quantity" />
-					<input type="button" onclick="OrderUpdater.updateQuantity(@itemVM.ProductID, @itemVM.OrderID, this)" value="update" /> 
 				</div>
+
+				<div class="col-md-1 col-xs-4">
+					<input type="button" class="btn btn-warning btn-sm" onclick="OrderUpdater.updateQuantity(@itemVM.ProductID, @itemVM.OrderID, this)" value="update" /> 
+				</div>
+
+				<div class="col-md-1 col-xs-4">
+					<input type="button" class="btn btn-danger btn-sm" onclick="OrderUpdater.removeFromCart(@itemVM.ProductID, @itemVM.OrderID, this)" value="remove" /> 
+				</div>
+
 			</div>
 		}
 	</div>
-	<div class="row">  
-        <div class="col-md-2 col-sm-2  col-xs-12">
-            @Html.LabelFor(model => model.CustomerName)
-        </div>
-       <div class="col-md-6  col-sm-6 col-xs-12">
-            @Html.EditorFor(model => model.CustomerName)
-            @Html.ValidationMessageFor(model => model.CustomerName)
-        </div>
-	</div>
-	<div class="row">
-       <div class="col-md-2  col-sm-2 col-xs-12">
-            @Html.LabelFor(model => model.EmailAddress)
-        </div>
-        <div class="col-md-6 col-sm-6 col-xs-12">
-            @Html.EditorFor(model => model.EmailAddress)
-            @Html.ValidationMessageFor(model => model.EmailAddress)
-        </div>
-	</div>
-	<div class="row">
-        <div class="col-md-2  col-sm-2 col-xs-12">
-            @Html.LabelFor(model => model.ShippingAddress)
-        </div>
-         <div class="col-md-6 col-sm-6 col-xs-12">
-            @Html.EditorFor(model => model.ShippingAddress)
-            @Html.ValidationMessageFor(model => model.ShippingAddress)
-        </div>
-	</div>
-	<div class="row">
-         <div class="col-md-2  col-sm-2 col-xs-12">
-            @Html.LabelFor(model => model.PhoneNumber)
-        </div>
-        <div class="col-md-6 col-sm-6 col-xs-12">
-            @Html.EditorFor(model => model.PhoneNumber)
-            @Html.ValidationMessageFor(model => model.PhoneNumber)
-        </div>
-
-	</div>	
-	<div class="row">
-		<div class="md-2 md-offset-8">
-		@Html.HiddenFor(model => model.OrderID)
-			<input type="submit" value="Place Order" />
-		</div>
-	</div>
+	
        
 
 }
 
 <div>
-    @Html.ActionLink("Back to Products", "Products", "Product")
+    @Html.ActionLink("Back to Products", "Products", "Product")  
+	@Html.ActionLink("Checkout", "Checkout", "Order" , new { orderID = ViewBag.OrderID }, null)
 </div>
 </section>
 @section Scripts {
