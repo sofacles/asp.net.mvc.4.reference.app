@@ -155,25 +155,6 @@ namespace DAL
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        /// <param name="ipAddress">No Metadata Documentation available.</param>
-        public ObjectResult<Nullable<global::System.Int32>> Order_Create(global::System.String ipAddress)
-        {
-            ObjectParameter ipAddressParameter;
-            if (ipAddress != null)
-            {
-                ipAddressParameter = new ObjectParameter("ipAddress", ipAddress);
-            }
-            else
-            {
-                ipAddressParameter = new ObjectParameter("ipAddress", typeof(global::System.String));
-            }
-    
-            return base.ExecuteFunction<Nullable<global::System.Int32>>("Order_Create", ipAddressParameter);
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         /// <param name="iD">No Metadata Documentation available.</param>
         public int Order_Delete(Nullable<global::System.Int32> iD)
         {
@@ -395,6 +376,25 @@ namespace DAL
             }
     
             return base.ExecuteFunction<OrderItem_Select_Result>("OrderItem_Select", orderIDParameter);
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="ipAddress">No Metadata Documentation available.</param>
+        public ObjectResult<Nullable<global::System.Int32>> Order_Create(global::System.String ipAddress)
+        {
+            ObjectParameter ipAddressParameter;
+            if (ipAddress != null)
+            {
+                ipAddressParameter = new ObjectParameter("ipAddress", ipAddress);
+            }
+            else
+            {
+                ipAddressParameter = new ObjectParameter("ipAddress", typeof(global::System.String));
+            }
+    
+            return base.ExecuteFunction<Nullable<global::System.Int32>>("Order_Create", ipAddressParameter);
         }
 
         #endregion

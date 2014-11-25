@@ -12,9 +12,6 @@
       <End Role="Product" EntitySet="Products" />
       <End Role="OrderItem" EntitySet="OrderItems" />
     </AssociationSet>
-    <FunctionImport Name="Order_Create" ReturnType="Collection(Int32)">
-      <Parameter Name="ipAddress" Mode="In" Type="String" />
-    </FunctionImport>
     <FunctionImport Name="Order_Delete">
       <Parameter Name="ID" Mode="In" Type="Int32" />
     </FunctionImport>
@@ -40,6 +37,9 @@
     </FunctionImport>
     <FunctionImport Name="OrderItem_Select" ReturnType="Collection(KCStoreModel.OrderItem_Select_Result)">
       <Parameter Name="orderID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Order_Create" ReturnType="Collection(Int32)">
+      <Parameter Name="ipAddress" Mode="In" Type="String" />
     </FunctionImport>
   </EntityContainer>
   <EntityType Name="Order">

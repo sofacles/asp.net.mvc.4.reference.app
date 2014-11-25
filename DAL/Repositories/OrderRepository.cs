@@ -11,8 +11,7 @@ namespace DAL
 
 		public int? createOrderShell(string userIP)
 		{
-			var retVal = BikeEntities.Order_Create(userIP).First();
-			return retVal;
+			return BikeEntities.Order_Create(userIP).FirstOrDefault();
 		}
 
 		public int? UpdateItemQuantity(int productID, int orderID, uint quantity)

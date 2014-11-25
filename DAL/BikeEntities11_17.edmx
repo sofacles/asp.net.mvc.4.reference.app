@@ -25,9 +25,9 @@
           <Property Name="UserIP" Type="nchar" Nullable="false" MaxLength="16" />
           <Property Name="OrderedOn" Type="date" Nullable="false" />
           <Property Name="CustomerName" Type="nvarchar" Nullable="false" MaxLength="50" />
-          <Property Name="EmailAddress" Type="nchar" Nullable="false" MaxLength="256" />
-          <Property Name="ShippingAddress" Type="nchar" Nullable="false" MaxLength="256" />
-          <Property Name="PhoneNumber" Type="nchar" Nullable="false" MaxLength="20" />
+          <Property Name="EmailAddress" Type="nvarchar" Nullable="false" MaxLength="256" />
+          <Property Name="ShippingAddress" Type="nvarchar" Nullable="false" MaxLength="256" />
+          <Property Name="PhoneNumber" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
         </EntityType>
         <EntityType Name="OrderItem">
@@ -84,9 +84,9 @@
         <Function Name="Order_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ipAddress" Type="nchar" Mode="In" />
           <Parameter Name="customerName" Type="nvarchar" Mode="In" />
-          <Parameter Name="emailAddress" Type="nchar" Mode="In" />
-          <Parameter Name="shippingAddress" Type="nchar" Mode="In" />
-          <Parameter Name="phoneNumber" Type="nchar" Mode="In" />
+          <Parameter Name="emailAddress" Type="nvarchar" Mode="In" />
+          <Parameter Name="shippingAddress" Type="nvarchar" Mode="In" />
+          <Parameter Name="phoneNumber" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="OrderItem_AddOrUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="productID" Type="int" Mode="In" />
@@ -117,9 +117,6 @@
             <End Role="Product" EntitySet="Products" />
             <End Role="OrderItem" EntitySet="OrderItems" />
           </AssociationSet>
-          <FunctionImport Name="Order_Create" ReturnType="Collection(Int32)">
-          <Parameter Name="ipAddress" Mode="In" Type="String" />
-          </FunctionImport>
           <FunctionImport Name="Order_Delete">
           <Parameter Name="ID" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -144,7 +141,10 @@
           <Parameter Name="orderID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="OrderItem_Select" ReturnType="Collection(KCStoreModel.OrderItem_Select_Result)">
-            <Parameter Name="orderID" Mode="In" Type="Int32" />
+          <Parameter Name="orderID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Order_Create" ReturnType="Collection(Int32)">
+          <Parameter Name="ipAddress" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="Order">
@@ -291,7 +291,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="Order_Create" FunctionName="KCStoreModel.Store.Order_Create" />
           <FunctionImportMapping FunctionImportName="Order_Delete" FunctionName="KCStoreModel.Store.Order_Delete" />
           <FunctionImportMapping FunctionImportName="Order_Update" FunctionName="KCStoreModel.Store.Order_Update" />
           <FunctionImportMapping FunctionImportName="OrderItem_AddOrUpdate" FunctionName="KCStoreModel.Store.OrderItem_AddOrUpdate" />
@@ -310,6 +309,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Order_Create" FunctionName="KCStoreModel.Store.Order_Create" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -5,8 +5,11 @@
 @{
 	ViewBag.Title = "Checkout";
 }
+
+
 @using (Html.BeginForm())
 {
+	@Html.AntiForgeryToken()
 	@Html.ValidationSummary(true)
 	<section class="container cart">
 		<h2>

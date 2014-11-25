@@ -8,7 +8,7 @@ using BikeStore.Models;
 
 namespace BikeStore.Controllers
 {
-    public class OrderController : Controller
+	public class OrderController : Controller
     {
         private IOrderRepository orderRepository;
 
@@ -25,6 +25,7 @@ namespace BikeStore.Controllers
 		//
 		// POST: /Order/AddProductToOrder
 		[HttpPost]
+		[ValidateAntiForgeryToken]
 		public JsonResult AddProductToOrder(OrderItemViewModel orderItemViewModel)
         {
 			return UpdateItemQuantity(orderItemViewModel);
@@ -33,12 +34,15 @@ namespace BikeStore.Controllers
 		//
 		// POST: /Order/AddProductToOrder
 		[HttpPost]
+		[ValidateAntiForgeryToken]
 		public JsonResult RemoveProductFromOrder(OrderItemViewModel orderItemViewModel)
 		{
 			orderRepository.DeleteItem(orderItemViewModel.ProductID, orderItemViewModel.OrderID);
 			return Json(new { DeletedProductID = orderItemViewModel.ProductID });
 		}
 
+		[HttpPost]
+		[ValidateAntiForgeryToken]
 		private JsonResult UpdateItemQuantity(OrderItemViewModel orderItemViewModel)
 		{
 			int? orderID = -1;
@@ -66,6 +70,7 @@ namespace BikeStore.Controllers
 		//
 		// POST: /Order/UpdateOrderItemQuantity
 		[HttpPost]
+		[ValidateAntiForgeryToken]
 		public JsonResult UpdateOrderItemQuantity(OrderItemViewModel orderItemViewModel)
 		{
 			return UpdateItemQuantity(orderItemViewModel);
@@ -92,6 +97,7 @@ namespace BikeStore.Controllers
 		}
 
 		[HttpPost]
+		[ValidateAntiForgeryToken]
 		public ActionResult Checkout(CartViewModel cartVM)
 		{
 			Order order = orderRepository.GetOrder(cartVM.OrderID);

@@ -4,9 +4,10 @@ var OrderUpdater = function ()
 	var orderID = -1,
 	addProductUrl,
 	removeProductFromOrderUrl,
-	updateOrderItemUrl;
+	updateOrderItemUrl,
+	antiXSRFtoken;
 
-	
+
 
 	function updateQuantity(productID, orderID, btn)
 	{
@@ -22,7 +23,8 @@ var OrderUpdater = function ()
 		$.ajax({
 			type: "POST",
 			url: updateOrderItemUrl,
-			data: { productID: productID,
+			data: { __RequestVerificationToken: window.token,
+				productID: productID,
 				orderID: orderID,
 				quantity: quantity
 			},
@@ -37,12 +39,31 @@ var OrderUpdater = function ()
 	function updateOrderIdOnNavLinks(orderID)
 	{
 		var oldHref, i,
+		queryStringParams,
+		newQueryString,
 		$cartLinks = $(".cartLink");
 
 		for (i = 0; i < $cartLinks.length; i++)
 		{
 			oldHref = $($cartLinks[i]).attr("href");
-			$($cartLinks[i]).attr("href", oldHref.substring(0, oldHref.indexOf("?")) + "?orderID=" + orderID);
+			newQueryString = "?";
+			queryStringParams = oldHref.substring(oldHref.indexOf("?") + 1).split("&");
+			for (var j = 0; j < queryStringParams.length; j++)
+			{
+				if (queryStringParams[j].indexOf("orderID") == -1)
+				{
+					newQueryString += queryStringParams[j];
+				}
+				else
+				{
+					var qsParts = queryStringParams[j].split("=");
+					newQueryString += qsParts[0] + "=" + orderID;
+				}
+				newQueryString += "&";
+			}
+			//trim the last '&'
+			newQueryString = newQueryString.substring(0, newQueryString.length - 1);
+			$($cartLinks[i]).attr("href", oldHref.substring(0, oldHref.indexOf("?")) + newQueryString);
 		}
 	}
 
@@ -52,7 +73,8 @@ var OrderUpdater = function ()
 			$.ajax({
 				type: "POST",
 				url: addProductUrl,
-				data: { productID: productID,
+				data: { __RequestVerificationToken: window.token,
+					productID: productID,
 					orderID: orderID,
 					quantity: 1
 				},
@@ -69,10 +91,14 @@ var OrderUpdater = function ()
 		},
 		removeFromCart: function (productID, orderID, btn)
 		{
+			event.preventDefault();
+			var form = $('#__AjaxAntiForgeryForm');
+			var token = $('input[name="__RequestVerificationToken"]', form).val();
 			$.ajax({
 				type: "POST",
 				url: removeProductFromOrderUrl,
-				data: { productID: productID,
+				data: { __RequestVerificationToken: token,
+					productID: productID,
 					orderID: orderID,
 					quantity: 0
 				},
@@ -86,6 +112,8 @@ var OrderUpdater = function ()
 					//TODO: error messaging
 				}
 			});
+
+			return false;
 		},
 		updateQuantity: updateQuantity,
 		init: function (addUrl, updateUrl, removeUrl)
@@ -93,7 +121,15 @@ var OrderUpdater = function ()
 			addProductUrl = addUrl;
 			removeProductFromOrderUrl = removeUrl;
 			updateOrderItemUrl = updateUrl;
-		}
 
+			var i, oldUrlParts,
+			form = $('#__AjaxAntiForgeryForm');
+
+			antiXSRFtoken = token;
+
+			//update the header links with anti-xsrf token
+			$cartLinks = $(".cartLink");
+
+		}
 	};
 } ();
