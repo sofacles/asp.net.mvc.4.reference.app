@@ -4,19 +4,7 @@ var OrderUpdater = function ()
 	var orderID = -1,
 	addProductUrl,
 	removeProductFromOrderUrl,
-	updateOrderItemUrl,
-	antiXSRFtoken;
-
-
-
-	function updateQuantity(productID, orderID, btn)
-	{
-		event.preventDefault();
-		var quantity = $(btn).closest(".row").find("input[type='text']").val();
-
-		updateQuantityInternal(productID, orderID, quantity);
-		return false;
-	}
+	updateOrderItemUrl;
 
 	function updateQuantityInternal(productID, orderID, quantity)
 	{
@@ -30,8 +18,7 @@ var OrderUpdater = function ()
 			},
 			success: function (data)
 			{
-				//TODO: show an OK icon?
-
+				//TODO: show an OK icon
 			}
 		});
 	}
@@ -115,20 +102,19 @@ var OrderUpdater = function ()
 
 			return false;
 		},
-		updateQuantity: updateQuantity,
+		updateQuantity: function(productID, orderID, btn)
+		{
+			event.preventDefault();
+			var quantity = $(btn).closest(".row").find("input[type='text']").val();
+
+			updateQuantityInternal(productID, orderID, quantity);
+			return false;
+		},
 		init: function (addUrl, updateUrl, removeUrl)
 		{
 			addProductUrl = addUrl;
 			removeProductFromOrderUrl = removeUrl;
 			updateOrderItemUrl = updateUrl;
-
-			var i, oldUrlParts,
-			form = $('#__AjaxAntiForgeryForm');
-
-			antiXSRFtoken = token;
-
-			//update the header links with anti-xsrf token
-			$cartLinks = $(".cartLink");
 
 		}
 	};
