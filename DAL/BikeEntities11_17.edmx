@@ -82,7 +82,7 @@
           <Parameter Name="orderID" Type="int" Mode="In" />
         </Function>
         <Function Name="Order_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="ipAddress" Type="nchar" Mode="In" />
+          <Parameter Name="orderID" Type="int" Mode="In" />
           <Parameter Name="customerName" Type="nvarchar" Mode="In" />
           <Parameter Name="emailAddress" Type="nvarchar" Mode="In" />
           <Parameter Name="shippingAddress" Type="nvarchar" Mode="In" />
@@ -120,13 +120,6 @@
           <FunctionImport Name="Order_Delete">
           <Parameter Name="ID" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="Order_Update" ReturnType="Collection(Int32)">
-            <Parameter Name="ipAddress" Mode="In" Type="String" />
-            <Parameter Name="customerName" Mode="In" Type="String" />
-            <Parameter Name="emailAddress" Mode="In" Type="String" />
-            <Parameter Name="shippingAddress" Mode="In" Type="String" />
-            <Parameter Name="phoneNumber" Mode="In" Type="String" />
-          </FunctionImport>
           <FunctionImport Name="OrderItem_AddOrUpdate" ReturnType="Collection(Int32)">
             <Parameter Name="productID" Mode="In" Type="Int32" />
             <Parameter Name="quantity" Mode="In" Type="Int32" />
@@ -145,6 +138,13 @@
           </FunctionImport>
           <FunctionImport Name="Order_Create" ReturnType="Collection(Int32)">
           <Parameter Name="ipAddress" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Order_Update" ReturnType="Collection(Int32)">
+            <Parameter Name="orderID" Mode="In" Type="Int32" />
+            <Parameter Name="customerName" Mode="In" Type="String" />
+            <Parameter Name="emailAddress" Mode="In" Type="String" />
+            <Parameter Name="shippingAddress" Mode="In" Type="String" />
+            <Parameter Name="phoneNumber" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="Order">
@@ -238,11 +238,11 @@
                   <ResultBinding Name="id" ColumnName="id" />
                 </InsertFunction>
                 <UpdateFunction FunctionName="KCStoreModel.Store.Order_Update" >
+                  <ScalarProperty Name="id" ParameterName="orderID" Version="Current" />
                   <ScalarProperty Name="ShippingAddress" ParameterName="phoneNumber" Version="Current" />
                   <ScalarProperty Name="ShippingAddress" ParameterName="shippingAddress" Version="Current" />
                   <ScalarProperty Name="EmailAddress" ParameterName="emailAddress" Version="Current" />
                   <ScalarProperty Name="CustomerName" ParameterName="customerName" Version="Current" />
-                  <ScalarProperty Name="UserIP" ParameterName="ipAddress" Version="Current" />
                   <ResultBinding Name="id" ColumnName="id" />
                 </UpdateFunction>
                 <DeleteFunction FunctionName="KCStoreModel.Store.Order_Delete" >
@@ -292,7 +292,6 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="Order_Delete" FunctionName="KCStoreModel.Store.Order_Delete" />
-          <FunctionImportMapping FunctionImportName="Order_Update" FunctionName="KCStoreModel.Store.Order_Update" />
           <FunctionImportMapping FunctionImportName="OrderItem_AddOrUpdate" FunctionName="KCStoreModel.Store.OrderItem_AddOrUpdate" />
           <FunctionImportMapping FunctionImportName="OrderItem_Remove" FunctionName="KCStoreModel.Store.OrderItem_Remove" />
           <FunctionImportMapping FunctionImportName="Product_Select" FunctionName="KCStoreModel.Store.Product_Select" />
@@ -310,6 +309,7 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="Order_Create" FunctionName="KCStoreModel.Store.Order_Create" />
+          <FunctionImportMapping FunctionImportName="Order_Update" FunctionName="KCStoreModel.Store.Order_Update" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

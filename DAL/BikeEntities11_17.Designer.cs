@@ -174,69 +174,6 @@ namespace DAL
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        /// <param name="ipAddress">No Metadata Documentation available.</param>
-        /// <param name="customerName">No Metadata Documentation available.</param>
-        /// <param name="emailAddress">No Metadata Documentation available.</param>
-        /// <param name="shippingAddress">No Metadata Documentation available.</param>
-        /// <param name="phoneNumber">No Metadata Documentation available.</param>
-        public ObjectResult<Nullable<global::System.Int32>> Order_Update(global::System.String ipAddress, global::System.String customerName, global::System.String emailAddress, global::System.String shippingAddress, global::System.String phoneNumber)
-        {
-            ObjectParameter ipAddressParameter;
-            if (ipAddress != null)
-            {
-                ipAddressParameter = new ObjectParameter("ipAddress", ipAddress);
-            }
-            else
-            {
-                ipAddressParameter = new ObjectParameter("ipAddress", typeof(global::System.String));
-            }
-    
-            ObjectParameter customerNameParameter;
-            if (customerName != null)
-            {
-                customerNameParameter = new ObjectParameter("customerName", customerName);
-            }
-            else
-            {
-                customerNameParameter = new ObjectParameter("customerName", typeof(global::System.String));
-            }
-    
-            ObjectParameter emailAddressParameter;
-            if (emailAddress != null)
-            {
-                emailAddressParameter = new ObjectParameter("emailAddress", emailAddress);
-            }
-            else
-            {
-                emailAddressParameter = new ObjectParameter("emailAddress", typeof(global::System.String));
-            }
-    
-            ObjectParameter shippingAddressParameter;
-            if (shippingAddress != null)
-            {
-                shippingAddressParameter = new ObjectParameter("shippingAddress", shippingAddress);
-            }
-            else
-            {
-                shippingAddressParameter = new ObjectParameter("shippingAddress", typeof(global::System.String));
-            }
-    
-            ObjectParameter phoneNumberParameter;
-            if (phoneNumber != null)
-            {
-                phoneNumberParameter = new ObjectParameter("phoneNumber", phoneNumber);
-            }
-            else
-            {
-                phoneNumberParameter = new ObjectParameter("phoneNumber", typeof(global::System.String));
-            }
-    
-            return base.ExecuteFunction<Nullable<global::System.Int32>>("Order_Update", ipAddressParameter, customerNameParameter, emailAddressParameter, shippingAddressParameter, phoneNumberParameter);
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         /// <param name="productID">No Metadata Documentation available.</param>
         /// <param name="quantity">No Metadata Documentation available.</param>
         /// <param name="orderID">No Metadata Documentation available.</param>
@@ -395,6 +332,69 @@ namespace DAL
             }
     
             return base.ExecuteFunction<Nullable<global::System.Int32>>("Order_Create", ipAddressParameter);
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="orderID">No Metadata Documentation available.</param>
+        /// <param name="customerName">No Metadata Documentation available.</param>
+        /// <param name="emailAddress">No Metadata Documentation available.</param>
+        /// <param name="shippingAddress">No Metadata Documentation available.</param>
+        /// <param name="phoneNumber">No Metadata Documentation available.</param>
+        public ObjectResult<Nullable<global::System.Int32>> Order_Update(Nullable<global::System.Int32> orderID, global::System.String customerName, global::System.String emailAddress, global::System.String shippingAddress, global::System.String phoneNumber)
+        {
+            ObjectParameter orderIDParameter;
+            if (orderID.HasValue)
+            {
+                orderIDParameter = new ObjectParameter("orderID", orderID);
+            }
+            else
+            {
+                orderIDParameter = new ObjectParameter("orderID", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter customerNameParameter;
+            if (customerName != null)
+            {
+                customerNameParameter = new ObjectParameter("customerName", customerName);
+            }
+            else
+            {
+                customerNameParameter = new ObjectParameter("customerName", typeof(global::System.String));
+            }
+    
+            ObjectParameter emailAddressParameter;
+            if (emailAddress != null)
+            {
+                emailAddressParameter = new ObjectParameter("emailAddress", emailAddress);
+            }
+            else
+            {
+                emailAddressParameter = new ObjectParameter("emailAddress", typeof(global::System.String));
+            }
+    
+            ObjectParameter shippingAddressParameter;
+            if (shippingAddress != null)
+            {
+                shippingAddressParameter = new ObjectParameter("shippingAddress", shippingAddress);
+            }
+            else
+            {
+                shippingAddressParameter = new ObjectParameter("shippingAddress", typeof(global::System.String));
+            }
+    
+            ObjectParameter phoneNumberParameter;
+            if (phoneNumber != null)
+            {
+                phoneNumberParameter = new ObjectParameter("phoneNumber", phoneNumber);
+            }
+            else
+            {
+                phoneNumberParameter = new ObjectParameter("phoneNumber", typeof(global::System.String));
+            }
+    
+            return base.ExecuteFunction<Nullable<global::System.Int32>>("Order_Update", orderIDParameter, customerNameParameter, emailAddressParameter, shippingAddressParameter, phoneNumberParameter);
         }
 
         #endregion

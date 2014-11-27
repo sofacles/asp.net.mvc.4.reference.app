@@ -26,7 +26,7 @@ namespace DAL
 
 		public int? UpdateShippingInfo(int orderID, string ipAddress, string name, string email, string shippingAddress, string phoneNumber)
 		{
-			return BikeEntities.Order_Update(ipAddress, name, email, shippingAddress, phoneNumber).FirstOrDefault();
+			return BikeEntities.Order_Update(orderID, name, email, shippingAddress, phoneNumber).FirstOrDefault();
 		}
 
 		public Order GetOrder(int orderID)

@@ -4,3 +4,4 @@ C:\Users\Brad\Documents\Visual Studio 2010\Projects\BikeStore\DAL\bin\Debug\DAL.
 C:\Users\Brad\Documents\Visual Studio 2010\Projects\BikeStore\DAL\obj\Debug\DAL.dll
 C:\Users\Brad\Documents\Visual Studio 2010\Projects\BikeStore\DAL\obj\Debug\DAL.pdb
 C:\Users\Brad\Documents\Visual Studio 2010\Projects\BikeStore\DAL\bin\Debug\System.Data.Entity.dll
+C:\Users\Brad\Documents\Visual Studio 2010\Projects\BikeStore\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache

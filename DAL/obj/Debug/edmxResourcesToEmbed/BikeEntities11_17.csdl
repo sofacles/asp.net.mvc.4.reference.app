@@ -15,13 +15,6 @@
     <FunctionImport Name="Order_Delete">
       <Parameter Name="ID" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="Order_Update" ReturnType="Collection(Int32)">
-      <Parameter Name="ipAddress" Mode="In" Type="String" />
-      <Parameter Name="customerName" Mode="In" Type="String" />
-      <Parameter Name="emailAddress" Mode="In" Type="String" />
-      <Parameter Name="shippingAddress" Mode="In" Type="String" />
-      <Parameter Name="phoneNumber" Mode="In" Type="String" />
-    </FunctionImport>
     <FunctionImport Name="OrderItem_AddOrUpdate" ReturnType="Collection(Int32)">
       <Parameter Name="productID" Mode="In" Type="Int32" />
       <Parameter Name="quantity" Mode="In" Type="Int32" />
@@ -40,6 +33,13 @@
     </FunctionImport>
     <FunctionImport Name="Order_Create" ReturnType="Collection(Int32)">
       <Parameter Name="ipAddress" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Order_Update" ReturnType="Collection(Int32)">
+      <Parameter Name="orderID" Mode="In" Type="Int32" />
+      <Parameter Name="customerName" Mode="In" Type="String" />
+      <Parameter Name="emailAddress" Mode="In" Type="String" />
+      <Parameter Name="shippingAddress" Mode="In" Type="String" />
+      <Parameter Name="phoneNumber" Mode="In" Type="String" />
     </FunctionImport>
   </EntityContainer>
   <EntityType Name="Order">

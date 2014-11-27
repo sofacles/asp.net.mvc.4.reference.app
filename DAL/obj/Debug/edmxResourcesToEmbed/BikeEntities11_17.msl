@@ -20,11 +20,11 @@
             <ResultBinding Name="id" ColumnName="id" />
           </InsertFunction>
           <UpdateFunction FunctionName="KCStoreModel.Store.Order_Update">
+            <ScalarProperty Name="id" ParameterName="orderID" Version="Current" />
             <ScalarProperty Name="ShippingAddress" ParameterName="phoneNumber" Version="Current" />
             <ScalarProperty Name="ShippingAddress" ParameterName="shippingAddress" Version="Current" />
             <ScalarProperty Name="EmailAddress" ParameterName="emailAddress" Version="Current" />
             <ScalarProperty Name="CustomerName" ParameterName="customerName" Version="Current" />
-            <ScalarProperty Name="UserIP" ParameterName="ipAddress" Version="Current" />
             <ResultBinding Name="id" ColumnName="id" />
           </UpdateFunction>
           <DeleteFunction FunctionName="KCStoreModel.Store.Order_Delete">
@@ -74,7 +74,6 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="Order_Delete" FunctionName="KCStoreModel.Store.Order_Delete" />
-    <FunctionImportMapping FunctionImportName="Order_Update" FunctionName="KCStoreModel.Store.Order_Update" />
     <FunctionImportMapping FunctionImportName="OrderItem_AddOrUpdate" FunctionName="KCStoreModel.Store.OrderItem_AddOrUpdate" />
     <FunctionImportMapping FunctionImportName="OrderItem_Remove" FunctionName="KCStoreModel.Store.OrderItem_Remove" />
     <FunctionImportMapping FunctionImportName="Product_Select" FunctionName="KCStoreModel.Store.Product_Select" />
@@ -92,5 +91,6 @@
       </ResultMapping>
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="Order_Create" FunctionName="KCStoreModel.Store.Order_Create" />
+    <FunctionImportMapping FunctionImportName="Order_Update" FunctionName="KCStoreModel.Store.Order_Update" />
   </EntityContainerMapping>
 </Mapping>
